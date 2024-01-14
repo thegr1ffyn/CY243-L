@@ -43,9 +43,9 @@ b. Groups can read and execute the file
 c. Others can read from the file
 Do this using both naming and numbers conventions.
 
-![Untitled 6](https://github.com/thegr1ffyn/CY243-L/assets/95119705/25188934-aabd-47b1-b5df-5c15da6dff44)
 
 Using Naming Convention
-![Untitled](https://github.com/thegr1ffyn/CY243-L/assets/95119705/f08de45e-a78f-4362-8674-76626d05308e)
+![Untitled 6](https://github.com/thegr1ffyn/CY243-L/assets/95119705/25188934-aabd-47b1-b5df-5c15da6dff44)
 
 Using Numbered Convention
+![Untitled](https://github.com/thegr1ffyn/CY243-L/assets/95119705/f08de45e-a78f-4362-8674-76626d05308e)
