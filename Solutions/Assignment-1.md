@@ -26,8 +26,8 @@ Setup the lab using
 chmod +x start.sh
 sudo ./start.sh
 ```
+![Untitled](https://github.com/thegr1ffyn/CY243-L/assets/95119705/cdd8a8be-8ff6-4d44-83b2-65e41d8aead1)
 
-![Untitled](Assignment-1%20abed4cf22beb467a8c3e6df05ed5b3b1/Untitled.png)
 
 ## Additional Questions:
 
@@ -42,8 +42,8 @@ Answer: `hodor`
 ### What is the password for the user on share.local ? [Add a screenshot of how you found it]
 
 Answer: `stark`
+![Untitled 1](https://github.com/thegr1ffyn/CY243-L/assets/95119705/6020cd52-319b-4299-ac2f-ff699e18d601)
 
-![Untitled](Assignment-1%20abed4cf22beb467a8c3e6df05ed5b3b1/Untitled%201.png)
 
 ### How many udp ports are open on udp.local ?
 
@@ -53,7 +53,7 @@ Answer: 1 port only, `24782`
 
 After completing got the first flag
 
-![Untitled](Assignment-1%20abed4cf22beb467a8c3e6df05ed5b3b1/Untitled%202.png)
+![Untitled 2](https://github.com/thegr1ffyn/CY243-L/assets/95119705/f90db2a7-bf6f-46ba-9b67-429447ea56dc)
 
 Flag 01: `CY243L{SETUP_5e00142dc7bd6a35d5a27a0083d7cd5a}`
 
@@ -61,22 +61,22 @@ Flag 01: `CY243L{SETUP_5e00142dc7bd6a35d5a27a0083d7cd5a}`
 
 First did a complete nmap scan to find open port
 
-![Untitled](Assignment-1%20abed4cf22beb467a8c3e6df05ed5b3b1/Untitled%203.png)
+![Untitled 3](https://github.com/thegr1ffyn/CY243-L/assets/95119705/9415af5e-b358-4c1d-8e4e-b641a2bfa53c)
 
 now directory busting using `dirb`
 
-![Untitled](Assignment-1%20abed4cf22beb467a8c3e6df05ed5b3b1/Untitled%204.png)
+![Untitled 4](https://github.com/thegr1ffyn/CY243-L/assets/95119705/17e037cd-5e6b-4117-a8c9-a972e0a26ce8)
 
 Through fuzzing found that `/api/robots.txt` has a hint
 
-![Untitled](Assignment-1%20abed4cf22beb467a8c3e6df05ed5b3b1/Untitled%205.png)
+![Untitled 5](https://github.com/thegr1ffyn/CY243-L/assets/95119705/719da77c-3d57-4fb0-aaf0-a2b682dc18b5)
 
 Now to automate the process I wrote a python script
 
 ```python
 import requests
 
-base_url = "http://10.10.18.17:17613"
+base_url = "http://ip:port"
 directory = "/musicnews/"
 
 for i in range(100):
@@ -96,7 +96,7 @@ Now saving this as `[script](http://script.sh).py` and running it iterates 00-10
 
 Finally got flag:
 
-![Untitled](Assignment-1%20abed4cf22beb467a8c3e6df05ed5b3b1/Untitled%206.png)
+![Untitled 6](https://github.com/thegr1ffyn/CY243-L/assets/95119705/15245900-85e6-40d1-9ee0-8bf018eeefbb)
 
 Flag: `CY243L{WEB_4b02f09827f641f7e87d15c13ad02b09}`
 
@@ -125,15 +125,15 @@ Host script results:
 
 I started the enumeration with SMB and found some inaccessible SMB shares.
 
-![Untitled](Assignment-1%20abed4cf22beb467a8c3e6df05ed5b3b1/Untitled%207.png)
+![Untitled 7](https://github.com/thegr1ffyn/CY243-L/assets/95119705/d66f8091-b0f5-4f8c-a5a2-c392914e94c2)
 
 By doing an smbclient scan to look for sharenames inside `share.local` we get the following.
 
-![Untitled](Assignment-1%20abed4cf22beb467a8c3e6df05ed5b3b1/Untitled%208.png)
+![Untitled 8](https://github.com/thegr1ffyn/CY243-L/assets/95119705/10fd3822-b89f-4e9f-815b-db40afa65255)
 
 By opening into the `share.local/share` we open it using `kali` password and get flag 2
 
-![Untitled](Assignment-1%20abed4cf22beb467a8c3e6df05ed5b3b1/Untitled%209.png)
+![Untitled 9](https://github.com/thegr1ffyn/CY243-L/assets/95119705/7d44b8df-a040-4768-b021-96a5323bd560)
 
 By running the following we recover two `.txt` files from the smb
 
@@ -142,19 +142,16 @@ smb: \> get readme.txt
 smb: \> get flag.txt
 ```
 
-![Untitled](Assignment-1%20abed4cf22beb467a8c3e6df05ed5b3b1/Untitled%2010.png)
+![Untitled 10](https://github.com/thegr1ffyn/CY243-L/assets/95119705/dc4a9c92-1dec-4a15-af1e-c9c2abe0e6f2)
 
 Flag 1: `CY243L{SAMBA1_47488c47541ecc06ec88fc10c7243e20}`
 
 ### Part 2
 
 For second part, we had already found credentials in `web.local` 
-
-![Untitled](Assignment-1%20abed4cf22beb467a8c3e6df05ed5b3b1/Untitled%201.png)
-
 By base64 decode we get the credentials
+![Untitled 11](https://github.com/thegr1ffyn/CY243-L/assets/95119705/b934653a-6437-45de-ab42-7eb9bbeaaa79)
 
-![Untitled](Assignment-1%20abed4cf22beb467a8c3e6df05ed5b3b1/Untitled%2011.png)
 
 Credentials: `hodor:stark`
 
@@ -166,7 +163,7 @@ kali@kali:~$ smbclient //share.local/secure-share -U hodor%stark
 
 Got access and did `get readme.txt` and opened it to find the second flag
 
-![Untitled](Assignment-1%20abed4cf22beb467a8c3e6df05ed5b3b1/Untitled%2012.png)
+![Untitled 12](https://github.com/thegr1ffyn/CY243-L/assets/95119705/991192b0-e5df-46cf-a7c3-fe0dcdd60a3b)
 
 Flag 2: `CY243L{SAMBA_ADMIN_7c641b7daa7c3611c35bd02f50f05875}`
 
@@ -182,7 +179,7 @@ Here `-sU` is UDP scan, `--min-rate 5000` is used to evade any firewall or secur
 
 I got this
 
-![Untitled](Assignment-1%20abed4cf22beb467a8c3e6df05ed5b3b1/Untitled%2013.png)
+![Untitled 13](https://github.com/thegr1ffyn/CY243-L/assets/95119705/0da69e7b-7674-4736-aa18-5682c923440c)
 
 Now to connect using `nc` I did following command
 
@@ -192,10 +189,10 @@ kali@kali:~$ nc -u udp.local 24782
 
 It displayed this.
 
-![Untitled](Assignment-1%20abed4cf22beb467a8c3e6df05ed5b3b1/Untitled%2014.png)
+![Untitled 14](https://github.com/thegr1ffyn/CY243-L/assets/95119705/cbc2433e-cac1-4182-be8e-12f04a3d4b05)
 
 By inputting copied `flag` it gave me the flag:
+![Untitled 15](https://github.com/thegr1ffyn/CY243-L/assets/95119705/1c906dcc-283c-4f92-bce2-bae240f1448b)
 
-![Untitled](Assignment-1%20abed4cf22beb467a8c3e6df05ed5b3b1/Untitled%2015.png)
 
 Flag: `CY243L_UDP{jw34ibgtbjgtlpyzaq27g8v7uykh3fe7}`
